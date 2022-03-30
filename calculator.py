@@ -2,59 +2,44 @@
 
 from arithmetic import (add, subtract, multiply, divide, square, cube,
                         power, mod, )
-
-
+#take user input
 user_equation = input("Please enter your equation. Start with the operator followed by a space and number(s).")
-
 #tokenize input
-
 tokens = user_equation.split(' ')
-
-for token in tokens:
-    if token == "q":
-        break
-    if token == "+":
-        num1 = int(tokens[1])
-        num2 = int(tokens[2])
-        print(add(num1, num2))
-
-
 
 #go through the first value in the list, check with a conditional 
-# to know which function to use
-#if the first token is q, then we quit
-
-while tokens[0] != "q":
+    # to know which function to use
+token = tokens[0]
+while token != "q":
+ #   for token in tokens:
     num1 = int(tokens[1])
-    num2 = int(tokens[2])
-    
+    if len(tokens) == 3:
+        num2 = int(tokens[2])
 
-#add
-    if tokens[0] == "+":
+    if token == "+": #add
         print(add(num1, num2))
-        user_equation = input("Please enter your equation. Start with the operator followed by a space and number(s).")
-        tokens = user_equation.split(' ')
-#subtract
-    if tokens[0] == "-":
+
+    elif token == "-": #sub
         print(subtract(num1, num2))
 
-#multiply
-    if tokens[0] == "*":
+    elif token == "*": #multiply
         print(multiply(num1, num2))
 
-#divide
-    if tokens[0] == "/":
-        print(divide(num1, num2))
+    elif token =="/":
+        print(divide(num1,num2))
 
-#square
+    elif token == "square": #square
+        print(square(num1))
 
-#cube
+    elif token == "cube": #cubed
+        print(cube(num1))
 
-#power
+    elif token == "pow": #power
+        print(power(num1, num2))
 
-#mod
-
-#loop input forever if not broken by q
-user_equation = input("Please enter your equation. Start with the operator followed by a space and number(s).")
-tokens = user_equation.split(' ')
-##
+    elif token == "mod": #modulo/remainder
+        print(mod(num1, num2))
+    
+    user_equation = input("Please enter your equation. Start with the operator followed by a space and number(s).")
+    tokens = user_equation.split(' ')
+    token = tokens[0]
